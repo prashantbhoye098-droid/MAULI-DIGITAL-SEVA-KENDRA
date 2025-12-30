@@ -65,28 +65,12 @@
             color: #f59e0b;
         }
 
-        /* Tilak Gandh Icon using CSS Shapes */
-        .tilak-gandh {
-            width: 18px;
-            height: 26px;
-            position: relative;
-            background: #FDE68A;
-            border-radius: 50% 50% 10% 10%;
+        /* Enhanced Vitthal Tilak Styling */
+        .tilak-container {
             display: flex;
-            justify-content: center;
-        }
-        @media (min-width: 640px) {
-            .tilak-gandh { width: 30px; height: 40px; }
-        }
-        .tilak-red {
-            width: 2.5px;
-            height: 12px;
-            background: #DC2626;
-            margin-top: 3px;
-            border-radius: 2px;
-        }
-        @media (min-width: 640px) {
-            .tilak-red { width: 4px; height: 20px; margin-top: 5px; }
+            flex-direction: column;
+            align-items: center;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
         }
 
         .modal-overlay {
@@ -111,13 +95,20 @@
             </div>
         </div>
         
-        <!-- टिळक लोगो -->
+        <!-- विठ्ठलाचा टिळक/गंध लोगो -->
         <div class="absolute top-[6%] right-[5%] z-20">
-            <div class="flex flex-col items-center scale-[0.7] md:scale-100">
-                <div class="tilak-gandh">
-                    <div class="tilak-red"></div>
-                </div>
-                <div class="bg-gradient-to-br from-red-600 to-red-900 p-1.5 rounded-full shadow-lg border-2 border-yellow-400 mt-1 md:mt-2">
+            <div class="tilak-container scale-[0.85] md:scale-125">
+                <!-- SVG Tilak -->
+                <svg width="40" height="50" viewBox="0 0 40 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- U Shape (Saffron/Yellow) -->
+                    <path d="M10 5C10 5 10 25 20 25C30 25 30 5 30 5" stroke="#FDE68A" stroke-width="5" stroke-linecap="round"/>
+                    <!-- Vertical Red Line -->
+                    <path d="M20 8V22" stroke="#DC2626" stroke-width="5" stroke-linecap="round"/>
+                    <!-- Red Dot (Bindu) at bottom -->
+                    <circle cx="20" cy="24" r="3" fill="#DC2626" />
+                </svg>
+                <!-- Digital Icon Overlay -->
+                <div class="bg-gradient-to-br from-red-600 to-red-900 p-1.5 rounded-full shadow-lg border-2 border-yellow-400 -mt-2">
                     <i class="fas fa-mouse-pointer text-white text-[8px] md:text-[10px]"></i>
                 </div>
             </div>
@@ -139,6 +130,7 @@
 
             <!-- मालक आणि संपर्क माहिती -->
             <div class="flex flex-row justify-between items-end w-full">
+                <!-- मालकाचा बॉक्स -->
                 <div class="bg-white p-2 md:p-4 rounded-xl md:rounded-2xl border-b-[3px] md:border-b-4 border-red-600 shadow-xl ring-1 ring-slate-100 mb-[1%]">
                     <h2 class="text-[17px] sm:text-[24px] md:text-[34px] font-bold handwriting-font text-orange-600 leading-none whitespace-nowrap">
                         प्रशांत भोये
@@ -150,6 +142,7 @@
                     </div>
                 </div>
 
+                <!-- संपर्क माहिती -->
                 <div class="flex flex-col items-end gap-0.5 md:gap-2 mb-[1%]">
                     <div class="bg-[#0f172a] px-2 md:px-3 py-1 md:py-1.5 rounded-md md:rounded-xl border-b-[1px] md:border-b-2 border-yellow-500 text-white flex items-center gap-1 shadow-md">
                         <i class="fas fa-phone text-yellow-400 text-[8px] md:text-[10px]"></i>
@@ -193,7 +186,6 @@
         </div>
         
         <div class="p-3 md:p-8">
-            <!-- Navigation -->
             <div class="grid grid-cols-2 md:grid-cols-3 gap-2.5 md:gap-4 mb-4 md:mb-8 text-center">
                 <button id="btn-docs" onclick="showInfo('docs')" class="flex flex-col items-center gap-2 p-2.5 md:p-4 rounded-xl bg-blue-50 border border-blue-100 transition-all active:scale-95 shadow-sm active-btn">
                     <i class="fas fa-file-invoice text-blue-600 text-lg md:text-xl"></i>
@@ -217,7 +209,6 @@
                 </button>
             </div>
 
-            <!-- Content Area -->
             <div id="infoDisplayContainer" class="bg-slate-50 rounded-[1.5rem] p-4 md:p-6 min-h-[220px] border border-slate-100 relative overflow-hidden shadow-inner info-container text-left">
                 <div id="infoContent" class="text-[13px] md:text-[14px] text-slate-700 leading-relaxed font-semibold transition-opacity duration-200">
                     <!-- Dynamic Content -->
@@ -287,31 +278,31 @@
                     </h3>
                     <div class="space-y-3">
                         <div class="bg-white p-3 rounded-xl border-l-4 border-orange-500 shadow-sm">
-                            <p class="font-black text-slate-800 text-[12px] md:text-sm">१. जातीचा दाखला (Caste Certificate):</p>
+                            <p class="font-black text-slate-800 text-[12px] md:text-sm text-left">१. जातीचा दाखला (Caste Certificate):</p>
                             <p class="text-[11px] md:text-xs text-slate-600 mt-1 leading-relaxed">● आधार कार्ड ● रेशन कार्ड ● अर्जदाराचा शाळा सोडल्याचा दाखला (TC) ● वडिलांचा/आजोबांचा जातीचा १९५० (SC) किंवा १९६७ (OBC) पूर्वीचा पुरावा ● वंशावळ शपथपत्र.</p>
                         </div>
                         <div class="bg-white p-3 rounded-xl border-l-4 border-blue-500 shadow-sm">
-                            <p class="font-black text-slate-800 text-[12px] md:text-sm">२. उत्पन्नाचा दाखला (Income Certificate):</p>
+                            <p class="font-black text-slate-800 text-[12px] md:text-sm text-left">२. उत्पन्नाचा दाखला (Income Certificate):</p>
                             <p class="text-[11px] md:text-xs text-slate-600 mt-1 leading-relaxed">● आधार कार्ड ● रेशन कार्ड ● तलाठी अहवाल (मागील १ किंवा ३ वर्षांचा) ● स्वयं-घोषणापत्र ● पगार स्लिप किंवा फॉर्म १६ (असल्यास).</p>
                         </div>
                         <div class="bg-white p-3 rounded-xl border-l-4 border-green-500 shadow-sm">
-                            <p class="font-black text-slate-800 text-[12px] md:text-sm">३. शेतकरी दाखला (Farmer Certificate):</p>
+                            <p class="font-black text-slate-800 text-[12px] md:text-sm text-left">३. शेतकरी दाखला (Farmer Certificate):</p>
                             <p class="text-[11px] md:text-xs text-slate-600 mt-1 leading-relaxed">● आधार कार्ड ● रेशन कार्ड ● चालू वर्षाचा ७/१२ उतारा (Satbara) ● ८-अ उतारा ● तलाठी अहवाल/दाखला.</p>
                         </div>
                         <div class="bg-white p-3 rounded-xl border-l-4 border-red-500 shadow-sm">
-                            <p class="font-black text-slate-800 text-[12px] md:text-sm">४. अधिवास व राष्ट्रीयत्व (Domicile):</p>
+                            <p class="font-black text-slate-800 text-[12px] md:text-sm text-left">४. अधिवास व राष्ट्रीयत्व (Domicile):</p>
                             <p class="text-[11px] md:text-xs text-slate-600 mt-1 leading-relaxed">● आधार कार्ड ● रेशन कार्ड ● शाळा सोडल्याचा दाखला (TC) ● जन्म दाखला किंवा बोनाफाईड ● १५ वर्षांचा वास्तव्याचा पुरावा (उदा. १० वी/१२ वी मार्कशीट, विजा बिल, किंवा घरपट्टी).</p>
                         </div>
                         <div class="bg-white p-3 rounded-xl border-l-4 border-yellow-500 shadow-sm">
-                            <p class="font-black text-slate-800 text-[12px] md:text-sm">५. नॉन-क्रिमी लेअर (Non-Creamy Layer):</p>
+                            <p class="font-black text-slate-800 text-[12px] md:text-sm text-left">५. नॉन-क्रिमी लेअर (Non-Creamy Layer):</p>
                             <p class="text-[11px] md:text-xs text-slate-600 mt-1 leading-relaxed">● जातीचा दाखला ● मागील ३ वर्षांचा उत्पन्नाचा दाखला ● आधार कार्ड ● रेशन कार्ड ● प्रतिज्ञापत्र.</p>
                         </div>
                         <div class="bg-white p-3 rounded-xl border-l-4 border-purple-500 shadow-sm">
-                            <p class="font-black text-slate-800 text-[12px] md:text-sm">६. आर्थिकदृष्ट्या दुर्बल घटक (EWS):</p>
+                            <p class="font-black text-slate-800 text-[12px] md:text-sm text-left">६. आर्थिकदृष्ट्या दुर्बल घटक (EWS):</p>
                             <p class="text-[11px] md:text-xs text-slate-600 mt-1 leading-relaxed">● आधार कार्ड ● रेशन कार्ड ● उत्पन्नाचा दाखला ● रहिवासी पुरावा ● कुटुंबाचा १९६७ चा जातीचा पुरावा.</p>
                         </div>
                         <div class="bg-white p-3 rounded-xl border-l-4 border-indigo-500 shadow-sm">
-                            <p class="font-black text-slate-800 text-[12px] md:text-sm">७. पॅन आणि आधार अपडेट:</p>
+                            <p class="font-black text-slate-800 text-[12px] md:text-sm text-left">७. पॅन आणि आधार अपडेट:</p>
                             <p class="text-[11px] md:text-xs text-slate-600 mt-1 leading-relaxed"><strong>पॅन:</strong> आधार कार्ड, २ फोटो. <strong>आधार:</strong> दुरुस्तीसाठी गॅझेट किंवा TC किंवा पत्त्यासाठी लाईट बिल/मतदान कार्ड.</p>
                         </div>
                     </div>
@@ -391,7 +382,7 @@
             `,
             timings: `
                 <div class="space-y-4 text-left">
-                    <h3 class="text-green-600 font-black border-b border-green-200 pb-1 flex items-center gap-1">
+                    <h3 class="text-green-600 font-black border-b border-green-200 pb-1 flex items-center gap-1 text-left">
                         <i class="fas fa-clock text-green-600"></i> कामाची वेळ:
                     </h3>
                     <div class="bg-white p-5 rounded-2xl shadow-md border border-slate-100 space-y-3">
@@ -408,7 +399,7 @@
             feedback: `
                 <div class="space-y-3 text-left">
                     <h3 class="text-purple-600 font-black border-b border-purple-200 pb-0.5 flex items-center gap-1 text-purple-600">
-                        <i class="fas fa-star"></i> प्रतिक्रिया:
+                        <i class="fas fa-star text-purple-600"></i> प्रतिक्रिया:
                     </h3>
                     <div id="feedbackForm" class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 space-y-2">
                         <input type="text" id="fb-name" class="w-full p-2 text-[10px] border rounded focus:outline-none" placeholder="तुमचे नाव">
