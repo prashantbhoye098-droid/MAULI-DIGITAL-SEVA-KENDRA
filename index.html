@@ -27,7 +27,7 @@
                 linear-gradient(to bottom, rgba(30, 58, 138, 0.04) 1px, transparent 1px);
         }
         
-        /* Forced Landscape Graphic for Mobile Portrait - Same to Same Design */
+        /* Forced Landscape Graphic for Mobile Portrait */
         .card-graphic {
             position: relative;
             width: 100%;
@@ -162,7 +162,7 @@
         </button>
     </div>
 
-    <!-- BACK PAGE: माहिती केंद्र डॅशबोर्ड (सर्व माहितीपूर्ण विभाग) -->
+    <!-- BACK PAGE: माहिती केंद्र डॅशबोर्ड -->
     <div class="w-full max-w-[550px] bg-white rounded-[1.2rem] md:rounded-[2rem] shadow-2xl overflow-hidden border border-slate-100 text-left">
         <div class="bg-gradient-to-r from-blue-900 to-indigo-900 p-4 md:p-5 flex items-center gap-4 text-white">
             <div class="bg-white/20 p-1.5 rounded-xl shadow-inner">
@@ -185,7 +185,7 @@
                     <i class="fas fa-briefcase text-orange-600 text-lg md:text-xl"></i>
                     <span class="text-[8px] md:text-[9px] font-black text-orange-900 uppercase text-center">सेवा मिळवा</span>
                 </button>
-                <button id="btn-tagline" onclick="showInfo('taglines')" class="flex flex-col items-center gap-2 p-2.5 md:p-4 rounded-xl bg-red-50 border border-red-100 transition-all active:scale-95 shadow-sm">
+                <button id="btn-tagline" onclick="showInfo('taglines')" class="flex flex-col items-center gap-2 p-2.5 md:p-4 rounded-xl bg-red-50 border border-red-100 hover:bg-red-100 transition-all active:scale-95 shadow-sm">
                     <i class="fas fa-bullhorn text-red-600 text-lg md:text-xl"></i>
                     <span class="text-[8px] md:text-[9px] font-black text-red-900 uppercase text-center">घोषवाक्ये</span>
                 </button>
@@ -202,7 +202,7 @@
             <!-- माहिती प्रदर्शन क्षेत्र -->
             <div id="infoDisplayContainer" class="bg-slate-50 rounded-[1.5rem] p-4 md:p-6 min-h-[250px] border border-slate-100 relative overflow-hidden shadow-inner info-container text-left">
                 <div id="infoContent" class="text-[13px] md:text-[14px] text-slate-700 leading-relaxed font-semibold transition-opacity duration-200">
-                    <!-- JavaScript द्वारे माहिती येथे लोड होईल -->
+                    <!-- JavaScript लोड करेल -->
                 </div>
             </div>
         </div>
@@ -212,7 +212,7 @@
         </div>
     </div>
 
-    <!-- Booking Modal (नोंदणी खिडकी) -->
+    <!-- Booking Modal -->
     <div id="bookingModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 modal-overlay" onclick="closeBooking()"></div>
         <div class="bg-white w-full max-w-md rounded-3xl overflow-hidden shadow-2xl relative z-10 animate-in zoom-in duration-200">
@@ -229,13 +229,13 @@
                 <div>
                     <label class="text-[10px] uppercase font-bold text-slate-400">हवी असलेली सेवा निवडा</label>
                     <select id="sub-service-select" class="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white appearance-none cursor-pointer text-sm">
-                        <!-- पर्याय JavaScript द्वारे लोड होतील -->
+                        <!-- पर्याय लोड होतील -->
                     </select>
                 </div>
                 
                 <div class="bg-blue-50 p-3 rounded-xl border border-blue-100 flex items-start gap-3 text-left">
                     <i class="fas fa-info-circle text-blue-600 mt-1"></i>
-                    <p class="text-[10px] text-blue-800 leading-snug">पुढील बटण दाबल्यावर WhatsApp उघडेल. तिथे तुम्हाला आवश्यक कागदपत्रे (Documents) जोडावी लागतील.</p>
+                    <p class="text-[10px] text-blue-800 leading-snug">पुढील बटण दाबल्यावर WhatsApp उघडेल. तिथे तुम्हाला आवश्यक कागदपत्रे (Documents) पाठवावी लागतील.</p>
                 </div>
 
                 <button onclick="sendToWhatsApp()" class="w-full bg-green-600 text-white py-3.5 rounded-xl font-black text-sm shadow-lg hover:bg-green-700 active:scale-95 transition-all flex items-center justify-center gap-3">
@@ -253,46 +253,38 @@
 
         let currentCategory = "";
 
-        // सर्व सेवांचे मॅपिंग - बॅक पेजसाठी पूर्ण केले आहे
         const serviceMap = {
             "शासकीय दाखले": ["जातीचा दाखला", "उत्पन्नाचा दाखला", "शेतकरी दाखला", "नॅशनॅलिटी दाखला", "नॉन-क्रिमी लेअर", "EWS दाखला", "अधिवास दाखला"],
-            "नोकरी फॉर्म अर्ज": ["पोलीस भरती (Police Bharti)", "सैन्य भरती (Agniveer)", "MPSC / UPSC अर्ज", "शिक्षक भरती (TET/TAIT)", "ZP / नगरपालिका भरती", "रेल्वे भरती", "बँक भरती (IBPS)"],
+            "MahaDBT शेतकरी योजना": ["ट्रॅक्टर अनुदान", "विहीर अनुदान", "सिंचन साधने (ठिबक/तुषार)", "कृषी अवजारे अनुदान", "शेततळे अस्तरीकरण", "फळबाग लागवड", "कांदा चाळ योजना"],
+            "नोकरी फॉर्म अर्ज": ["पोलीस भरती", "सैन्य भरती", "MPSC / UPSC अर्ज", "शिक्षक भरती (TET)", "रेल्वे भरती", "बँक भरती (IBPS)"],
             "शैक्षणिक सेवा": ["महाडीबीटी स्कॉलरशिप", "बोर्ड परीक्षा फॉर्म", "शालेय प्रवेश अर्ज (RTE)", "गॅझेट नाव बदल", "निकाल प्रिंट"],
-            "शेतकरी सेवा": ["पिक विमा (Crop Insurance)", "७/१२ आणि ८-अ उतारा", "फेरफार नक्कल", "पीएम किसान नोंदणी", "विहीर/शेततळे योजना", "ड्रिप अनुदान"],
-            "आरटीओ सेवा": ["लर्निंग लायसन्स", "परमनंट लायसन्स", "लायसन्स रिन्यूवल", "गाडीचा विमा (Insurance)", "RTO टॅक्स भरणा"],
-            "पॅन/आधार सेवा": ["नवीन पॅन कार्ड", "पॅन कार्ड दुरुस्ती", "आधार कार्ड अपडेट", "मोबाईल नंबर लिंक", "आधार पत्ता बदल"]
+            "शेतकरी सेवा": ["पिक विमा (Crop Insurance)", "७/१२ आणि ८-अ उतारा", "फेरफार नक्कल", "पीएम किसान नोंदणी"],
+            "आरटीओ सेवा": ["लर्निंग लायसन्स", "परमनंट लायसन्स", "गाडीचा विमा", "RTO टॅक्स भरणा"],
+            "पॅन/आधार सेवा": ["नवीन पॅन कार्ड", "पॅन दुरुस्ती", "आधार कार्ड अपडेट", "मोबाईल नंबर लिंक"]
         };
 
         const data = {
             docs: `
                 <div class="space-y-4 text-left">
                     <h3 class="text-blue-600 font-black border-b border-blue-200 pb-1 flex items-center gap-1">
-                        <i class="fas fa-id-card"></i> आवश्यक कागदपत्र यादी:
+                        <i class="fas fa-id-card"></i> कागदपत्र यादी:
                     </h3>
                     <div class="space-y-3">
-                        <div class="bg-white p-3 rounded-xl border-l-4 border-red-500 shadow-sm">
-                            <p class="font-black text-slate-800 text-[12px] md:text-sm">१. नोकरी/परीक्षा फॉर्मसाठी:</p>
-                            <p class="text-[11px] md:text-xs text-slate-600 mt-1 leading-relaxed">● आधार कार्ड ● १० वी/१२ वी/पदवी मार्कशीट ● फोटो आणि सही ● जात प्रमाणपत्र ● नॉन-क्रिमी लेअर (OBC साठी) ● डोमिसाईल दाखला.</p>
+                        <div class="bg-white p-3 rounded-xl border-l-4 border-green-500 shadow-sm">
+                            <p class="font-black text-slate-800 text-[12px] md:text-sm">● MahaDBT शेतकरी योजना:</p>
+                            <p class="text-[11px] md:text-xs text-slate-600 mt-1 leading-relaxed">७/१२ उतारा, ८-अ उतारा, बँक पासबुक झेरॉक्स, मोबाईल लिंक असलेले आधार कार्ड, होल्डिंग (क्षेत्रफळ) दाखला.</p>
                         </div>
                         <div class="bg-white p-3 rounded-xl border-l-4 border-orange-500 shadow-sm">
-                            <p class="font-black text-slate-800 text-[12px] md:text-sm">२. जातीचा दाखला (Caste):</p>
-                            <p class="text-[11px] md:text-xs text-slate-600 mt-1 leading-relaxed">● आधार कार्ड ● रेशन कार्ड ● अर्जदाराचा शाळा सोडल्याचा दाखला (TC) ● वडिलांचा १९५० (SC साठी) किंवा १९६७ (OBC साठी) चा जातीचा पुरावा ● वंशावळ शपथपत्र.</p>
+                            <p class="font-black text-slate-800 text-[12px] md:text-sm">● जातीचा दाखला (Caste):</p>
+                            <p class="text-[10px] md:text-xs text-slate-600 mt-1 leading-relaxed">आधार कार्ड, रेशन कार्ड, अर्जदाराचा शाळा सोडल्याचा दाखला (TC), वडिलांचा १९५०/१९६७ चा जातीचा पुरावा.</p>
                         </div>
                         <div class="bg-white p-3 rounded-xl border-l-4 border-blue-500 shadow-sm">
-                            <p class="font-black text-slate-800 text-[12px] md:text-sm">३. उत्पन्नाचा दाखला (Income):</p>
-                            <p class="text-[11px] md:text-xs text-slate-600 mt-1 leading-relaxed">● आधार कार्ड ● रेशन कार्ड ● तलाठी अहवाल (मागील १ किंवा ३ वर्षांचा) ● स्वयं-घोषणापत्र ● पगार स्लिप (असल्यास).</p>
+                            <p class="font-black text-slate-800 text-[12px] md:text-sm">● उत्पन्नाचा दाखला (Income):</p>
+                            <p class="text-[11px] md:text-xs text-slate-600 mt-1 leading-relaxed">आधार कार्ड, रेशन कार्ड, तलाठी अहवाल (१ किंवा ३ वर्षे), स्वयं-घोषणापत्र.</p>
                         </div>
-                        <div class="bg-white p-3 rounded-xl border-l-4 border-green-500 shadow-sm">
-                            <p class="font-black text-slate-800 text-[12px] md:text-sm">४. शेतकरी दाखला (Farmer):</p>
-                            <p class="text-[11px] md:text-xs text-slate-600 mt-1 leading-relaxed">● आधार कार्ड ● रेशन कार्ड ● चालू वर्षाचा ७/१२ उतारा ● ८-अ उतारा ● तलाठी अहवाल/दाखला.</p>
-                        </div>
-                        <div class="bg-white p-3 rounded-xl border-l-4 border-yellow-500 shadow-sm">
-                            <p class="font-black text-slate-800 text-[12px] md:text-sm">५. अधिवास व राष्ट्रीयत्व (Domicile):</p>
-                            <p class="text-[11px] md:text-xs text-slate-600 mt-1 leading-relaxed">● आधार कार्ड ● रेशन कार्ड ● शाळा सोडल्याचा दाखला (TC) ● जन्म दाखला ● १५ वर्षांचा वास्तव्याचा पुरावा (लाईट बिल/घरपट्टी).</p>
-                        </div>
-                        <div class="bg-white p-3 rounded-xl border-l-4 border-purple-500 shadow-sm">
-                            <p class="font-black text-slate-800 text-[12px] md:text-sm">६. पॅन आणि आधार अपडेट:</p>
-                            <p class="text-[11px] md:text-xs text-slate-600 mt-1 leading-relaxed">● <strong>पॅन:</strong> आधार कार्ड, २ फोटो. ● <strong>आधार:</strong> दुरुस्तीसाठी गॅझेट किंवा पत्त्यासाठी लाईट बिल किंवा ग्रामपंचायत दाखला.</p>
+                        <div class="bg-white p-3 rounded-xl border-l-4 border-red-500 shadow-sm">
+                            <p class="font-black text-slate-800 text-[12px] md:text-sm">● नोकरी अर्ज (Exam Form):</p>
+                            <p class="text-[11px] md:text-xs text-slate-600 mt-1 leading-relaxed">आधार कार्ड, १० वी/१२ वी मार्कशीट, पासपोर्ट फोटो, सही, जात प्रमाणपत्र.</p>
                         </div>
                     </div>
                 </div>
@@ -303,6 +295,10 @@
                         <i class="fas fa-hand-holding-heart"></i> ऑनलाइन सेवा मिळवा:
                     </h3>
                     <div class="grid grid-cols-1 gap-2.5">
+                        <div class="bg-white p-3 rounded-xl shadow-sm border border-green-100 flex justify-between items-center">
+                            <div><p class="font-black text-green-800 text-xs">🚜 MahaDBT शेतकरी योजना</p><p class="text-[9px] text-slate-500 leading-tight">ट्रॅक्टर, विहीर, सिंचन संच व अवजारे अनुदान अर्ज.</p></div>
+                            <button onclick="openBooking('MahaDBT शेतकरी योजना')" class="bg-green-600 text-white px-3 py-1.5 rounded-lg text-[10px] font-bold active:scale-95 shadow-md">Apply</button>
+                        </div>
                         <div class="bg-white p-3 rounded-xl shadow-sm border border-red-100 flex justify-between items-center">
                             <div><p class="font-black text-red-800 text-xs">📝 नोकरी फॉर्म अर्ज</p><p class="text-[9px] text-slate-500">पोलीस, आर्मी, MPSC, ZP भरती अर्ज.</p></div>
                             <button onclick="openBooking('नोकरी फॉर्म अर्ज')" class="bg-red-600 text-white px-3 py-1.5 rounded-lg text-[10px] font-bold active:scale-95 shadow-md">Apply</button>
@@ -312,16 +308,8 @@
                             <button onclick="openBooking('शासकीय दाखले')" class="bg-blue-600 text-white px-3 py-1.5 rounded-lg text-[10px] font-bold active:scale-95 shadow-md">Apply</button>
                         </div>
                         <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex justify-between items-center">
-                            <div><p class="font-black text-green-800 text-xs">🚜 शेती विषयक सेवा</p><p class="text-[9px] text-slate-500">पिक विमा, ७/१२, पीएम किसान नोंदणी.</p></div>
-                            <button onclick="openBooking('शेतकरी सेवा')" class="bg-green-600 text-white px-3 py-1.5 rounded-lg text-[10px] font-bold active:scale-95 shadow-md">Apply</button>
-                        </div>
-                        <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex justify-between items-center">
                             <div><p class="font-black text-blue-700 text-xs">🎓 शैक्षणिक सेवा</p><p class="text-[9px] text-slate-500">स्कॉलरशिप, बोर्ड फॉर्म, RTE प्रवेश.</p></div>
                             <button onclick="openBooking('शैक्षणिक सेवा')" class="bg-blue-500 text-white px-3 py-1.5 rounded-lg text-[10px] font-bold active:scale-95 shadow-md">Apply</button>
-                        </div>
-                        <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex justify-between items-center">
-                            <div><p class="font-black text-red-700 text-xs">🚗 आरटीओ सेवा</p><p class="text-[9px] text-slate-500">लायसन्स, विमा, टॅक्स, गाडी ट्रान्सफर.</p></div>
-                            <button onclick="openBooking('आरटीओ सेवा')" class="bg-red-500 text-white px-3 py-1.5 rounded-lg text-[10px] font-bold active:scale-95 shadow-md">Apply</button>
                         </div>
                         <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex justify-between items-center">
                             <div><p class="font-black text-yellow-800 text-xs">💳 पॅन व आधार सेवा</p><p class="text-[9px] text-slate-500">नवीन पॅन, आधार दुरुस्ती, मोबाईल लिंक.</p></div>
@@ -345,15 +333,12 @@
                         <li class="bg-white p-3 rounded-xl border-l-4 border-blue-500 shadow-sm italic font-bold text-slate-700 text-xs md:text-sm">
                             "तंत्रज्ञान नवे, विश्वास जुना... सेवेसाठी सदैव तत्पर आम्ही पुन्हा पुन्हा!"
                         </li>
-                        <li class="bg-white p-3 rounded-xl border-l-4 border-green-500 shadow-sm italic font-bold text-slate-700 text-xs md:text-sm">
-                            "तुमचा विश्वास, आमची जबाबदारी. पठावे दिगर मधील आधुनिक डिजिटल वारी!"
-                        </li>
                     </ul>
                 </div>
             `,
             timings: `
                 <div class="space-y-4 text-left">
-                    <h3 class="text-green-600 font-black border-b border-green-200 pb-1 flex items-center gap-1">
+                    <h3 class="text-green-600 font-black border-b border-green-200 pb-1 flex items-center gap-1 text-left">
                         <i class="fas fa-clock text-green-600"></i> कामाची वेळ:
                     </h3>
                     <div class="bg-white p-5 rounded-2xl shadow-md border border-slate-100 space-y-3">
@@ -430,7 +415,7 @@
                 alert("कृपया तुमचे नाव लिहा!");
                 return;
             }
-            const msg = encodeURIComponent(`✨ *नवीन सेवा अर्ज* ✨\n👤 *नाव:* ${name}\n🛠️ *निवडलेली सेवा:* ${subService}\n📂 *विभाग:* ${currentCategory}\n\nनमस्कार प्रशांत सर, मला वरील सेवेचा लाभ घ्यायचा आहे. आवश्यक कागदपत्रे मी आता पाठवत आहे.`);
+            const msg = encodeURIComponent(`✨ *नवीन सेवा नोंदणी* ✨\n👤 *नाव:* ${name}\n🛠️ *निवडलेली सेवा:* ${subService}\n📂 *विभाग:* ${currentCategory}\n\nनमस्कार प्रशांत सर, मला वरील सेवेचा लाभ घ्यायचा आहे. आवश्यक कागदपत्रे मी आता पाठवत आहे.`);
             window.open(`https://wa.me/917083034607?text=${msg}`, '_blank');
             closeBooking();
         }
